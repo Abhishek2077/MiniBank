@@ -61,7 +61,7 @@ This project demonstrates **ASP.NET Core MVC with clean architecture** and **SQL
 
 ### 2. Set Up the Database
 1. Open **SQL Server Management Studio (SSMS)** and connect to your local SQL instance.  
-2. Open the `Database/setup.sql` file from the project in SSMS.  
+2. Open the `setup.sql` file from the project in SSMS.  
 3. Execute the entire script.  
    - This will create the **MiniBankDB** database, all required tables, and all stored procedures.  
 
