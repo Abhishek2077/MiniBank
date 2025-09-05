@@ -1,0 +1,59 @@
+@model List<MiniBank.Models.CreditApplication>
+@{
+    ViewData["Title"] = "My Applications";
+}
+
+<div class="row mt-5">
+    <div class="col-md-10 mx-auto">
+        <div class="card">
+            <div class="card-header">
+                <h4>Your Submitted Applications</h4>
+            </div>
+            <div class="card-body">
+                @if (Model != null && Model.Any())
+                {
+                    <table class="table table-striped table-bordered">
+                        <thead class="table-dark">
+                            <tr>
+                                <th>Company Structure</th>
+                                <th>Business Since</th>
+                                <th>Status</th>
+                                <th>Date Submitted</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var app in Model)
+                            {
+                                <tr>
+                                    <td>@app.CompanyStructure</td>
+                                    <td>@(app.BusinessSince.HasValue ? app.BusinessSince.Value.ToString("dd-MMM-yyyy") : "")</td>
+                                    <td>
+                                        @{
+                                            var statusClass = "bg-warning text-dark";
+                                            if (app.Status == "Approved") { statusClass = "bg-success text-white"; }
+                                            if (app.Status == "Rejected") { statusClass = "bg-danger text-white"; }
+                                        }
+                                        <span class="badge @statusClass">@app.Status</span>
+                                    </td>
+                                    <td>@app.SubmittedAt.ToString("dd-MMM-yyyy")</td>
+                                    <td>
+                                        @if (app.Status == "Pending")
+                                        {
+                                            <a asp-action="Edit" asp-route-id="@app.ApplicationID" class="btn btn-sm btn-info">Edit</a>
+                                            <a asp-action="Delete" asp-route-id="@app.ApplicationID" class="btn btn-sm btn-danger" onclick="return confirm('Are you sure you want to delete this application?');">Delete</a>
+                                        }
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                }
+                else
+                {
+                    <div class="alert alert-info">You have not submitted any applications yet.</div>
+                }
+            </div>
+        </div>
+    </div>
+</div>

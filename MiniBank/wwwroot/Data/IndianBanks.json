@@ -1,0 +1,174 @@
+{
+  "State Bank of India (SBI)": {
+    "States": {
+      "Uttar Pradesh": {
+        "Lucknow": {
+          "Hazratganj": { "IFSC": "SBIN0000123", "ZipCode": "226001" },
+          "Alambagh": { "IFSC": "SBIN0000456", "ZipCode": "226005" }
+        },
+        "Kanpur": {
+          "Mall Road": { "IFSC": "SBIN0000789", "ZipCode": "208001" }
+        }
+      },
+      "Maharashtra": {
+        "Mumbai": {
+          "Fort": { "IFSC": "SBIN0001001", "ZipCode": "400001" },
+          "Andheri": { "IFSC": "SBIN0001002", "ZipCode": "400053" }
+        }
+      }
+    }
+  },
+  "Bank of Baroda": {
+    "States": {
+      "Delhi": {
+        "New Delhi": {
+          "Connaught Place": { "IFSC": "BARB0CONNPT", "ZipCode": "110001" }
+        }
+      }
+    }
+  },
+  "Punjab National Bank (PNB)": {
+    "States": {
+      "Punjab": {
+        "Amritsar": {
+          "Golden Temple": { "IFSC": "PUNB0123456", "ZipCode": "143001" }
+        }
+      }
+    }
+  },
+  "Bank of India": {
+    "States": {
+      "Maharashtra": {
+        "Mumbai": {
+          "Nariman Point": { "IFSC": "BKID0001001", "ZipCode": "400021" }
+        }
+      }
+    }
+  },
+  "Union Bank of India": {
+    "States": {
+      "Karnataka": {
+        "Bangalore": {
+          "MG Road": { "IFSC": "UBIN0530786", "ZipCode": "560001" }
+        }
+      }
+    }
+  },
+  "Canara Bank": {
+    "States": {
+      "Tamil Nadu": {
+        "Chennai": {
+          "T Nagar": { "IFSC": "CNRB0001234", "ZipCode": "600017" }
+        }
+      }
+    }
+  },
+  "Bank of Maharashtra": {
+    "States": {
+      "Maharashtra": {
+        "Pune": {
+          "Shivaji Nagar": { "IFSC": "MAHB0000456", "ZipCode": "411005" }
+        }
+      }
+    }
+  },
+  "Central Bank of India": {
+    "States": {
+      "West Bengal": {
+        "Kolkata": {
+          "Dalhousie": { "IFSC": "CBIN0281234", "ZipCode": "700001" }
+        }
+      }
+    }
+  },
+  "Indian Overseas Bank": {
+    "States": {
+      "Tamil Nadu": {
+        "Chennai": {
+          "Adyar": { "IFSC": "IOBA0001234", "ZipCode": "600020" }
+        }
+      }
+    }
+  },
+  "Indian Bank": {
+    "States": {
+      "Tamil Nadu": {
+        "Chennai": {
+          "Mount Road": { "IFSC": "IDIB000M001", "ZipCode": "600002" }
+        }
+      }
+    }
+  },
+  "UCO Bank": {
+    "States": {
+      "West Bengal": {
+        "Kolkata": {
+          "BBD Bagh": { "IFSC": "UCBA0001234", "ZipCode": "700001" }
+        }
+      }
+    }
+  },
+  "Punjab & Sind Bank": {
+    "States": {
+      "Punjab": {
+        "Ludhiana": {
+          "Civil Lines": { "IFSC": "PSIB0001234", "ZipCode": "141001" }
+        }
+      }
+    }
+  },
+  "HDFC Bank": {
+    "States": {
+      "Maharashtra": {
+        "Mumbai": {
+          "Bandra": { "IFSC": "HDFC0001234", "ZipCode": "400050" }
+        }
+      }
+    }
+  },
+  "ICICI Bank": {
+    "States": {
+      "Delhi": {
+        "New Delhi": {
+          "South Extension": { "IFSC": "ICIC0001234", "ZipCode": "110049" }
+        }
+      }
+    }
+  },
+  "Axis Bank": {
+    "States": {
+      "Karnataka": {
+        "Bangalore": {
+          "Koramangala": { "IFSC": "UTIB0001234", "ZipCode": "560034" }
+        }
+      }
+    }
+  },
+  "Kotak Mahindra Bank": {
+    "States": {
+      "Maharashtra": {
+        "Mumbai": {
+          "Juhu": { "IFSC": "KKBK0001234", "ZipCode": "400049" }
+        }
+      }
+    }
+  },
+  "IndusInd Bank": {
+    "States": {
+      "Delhi": {
+        "New Delhi": {
+          "Connaught Place": { "IFSC": "INDB0001234", "ZipCode": "110001" }
+        }
+      }
+    }
+  },
+  "Bandhan Bank": {
+    "States": {
+      "West Bengal": {
+        "Kolkata": {
+          "Salt Lake": { "IFSC": "BDBL0001234", "ZipCode": "700091" }
+        }
+      }
+    }
+  }
+}

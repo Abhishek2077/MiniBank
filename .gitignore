@@ -1,0 +1,16 @@
+# Visual Studio generated
+*.vs/
+*.sln.docstates
+*.suo
+*.user
+*.log
+
+# Build results
+[Bb]in/
+[Oo]bj/
+
+# Secrets - DO NOT UPLOAD
+appsettings.json
+
+# User-specific files
+*.DS_Store

@@ -1,0 +1,85 @@
+﻿@model ApplicationDetailsViewModel
+@{
+    ViewData["Title"] = "Application Details";
+}
+
+<div class="card">
+    <div class="card-header">
+        <h3>Details for Application #@Model.ApplicationID</h3>
+    </div>
+    <div class="card-body">
+        <div class="row">
+            <div class="col-md-8">
+                <h4>Applicant Information</h4>
+                <dl class="row">
+                    <dt class="col-sm-4">Applicant Name</dt>
+                    <dd class="col-sm-8">@Model.ApplicantFullName</dd>
+
+                    <dt class="col-sm-4">Applicant Email</dt>
+                    <dd class="col-sm-8">@Model.ApplicantEmail</dd>
+
+                    <dt class="col-sm-4">Status</dt>
+                    <dd class="col-sm-8">
+                        @{
+                            var statusClass = "bg-warning text-dark"; // Default for Pending
+                            if (Model.Status == "Approved") { statusClass = "bg-success text-white"; }
+                            if (Model.Status == "Rejected") { statusClass = "bg-danger text-white"; }
+                        }
+                        <span class="badge @statusClass">@Model.Status</span>
+                    </dd>
+                </dl>
+
+                <h4 class="mt-4">Business & Bank Details</h4>
+                <dl class="row">
+                    <dt class="col-sm-4">Company Structure</dt>
+                    <dd class="col-sm-8">@Model.CompanyStructure</dd>
+
+                    <dt class="col-sm-4">In Business Since</dt>
+                    <dd class="col-sm-8">@Model.BusinessSince.ToString("dd-MMM-yyyy")</dd>
+
+                    <dt class="col-sm-4">Contact Phone</dt>
+                    <dd class="col-sm-8">@Model.PhoneNumber</dd>
+
+                    <dt class="col-sm-4">Address</dt>
+                    <dd class="col-sm-8">@Model.StreetAddress, @Model.City, @Model.State - @Model.ZipCode</dd>
+
+                    <dt class="col-sm-4">Bank Name</dt>
+                    <dd class="col-sm-8">@Model.BankName</dd>
+                    <dt class="col-sm-4">Account Number</dt>
+                    <dd class="col-sm-8">@Model.AccountNumber</dd>
+                    <dt class="col-sm-4">IFSC Code</dt>
+                    <dd class="col-sm-8">@Model.IFSCCode</dd>
+                    <dt class="col-sm-4">Bank Branch</dt>
+                    <dd class="col-sm-8">@Model.BankBranch</dd>
+                    <dt class="col-sm-4">Bank State</dt>
+                    <dd class="col-sm-8">@Model.BankState</dd>
+                    <dt class="col-sm-4">Bank City</dt>
+                    <dd class="col-sm-8">@Model.BankCity</dd>
+                    <dt class="col-sm-4">Bank Zip Code</dt>
+                    <dd class="col-sm-8">@Model.BankZipCode</dd>
+                </dl>
+            </div>
+            <div class="col-md-4">
+                <h4>Company Logo</h4>
+                @if (!string.IsNullOrEmpty(Model.LogoImagePath))
+                {
+                    <img src="@Model.LogoImagePath" class="img-fluid rounded" alt="Company Logo" />
+                }
+                else
+                {
+                    <p class="text-muted">No logo was uploaded.</p>
+                }
+            </div>
+        </div>
+        <hr />
+        <div class="d-flex justify-content-between">
+            <a asp-action="EmployeeView" class="btn btn-secondary">Back to List</a>
+
+            <form asp-action="UpdateStatus" method="post">
+                <input type="hidden" name="applicationId" value="@Model.ApplicationID" />
+                <button type="submit" name="status" value="Approved" class="btn btn-success">Approve</button>
+                <button type="submit" name="status" value="Rejected" class="btn btn-danger">Reject</button>
+            </form>
+        </div>
+    </div>
+</div>

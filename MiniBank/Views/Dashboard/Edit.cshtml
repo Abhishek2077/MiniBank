@@ -1,0 +1,236 @@
+@model MiniBank.Models.CreditApplication
+@{
+    ViewData["Title"] = "Edit Application";
+}
+<div class="row">
+    <div class="col-md-8 mx-auto">
+        <div class="card">
+            <div class="card-header">
+                <h3>Edit Your Application</h3>
+            </div>
+            <div class="card-body">
+                <form asp-action="Edit" method="post" enctype="multipart/form-data">
+                    <input type="hidden" asp-for="ApplicationID" />
+                    <div asp-validation-summary="All" class="text-danger"></div>
+                    <h5 class="mt-3">Business Information</h5>
+                    <hr />
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label asp-for="CompanyStructure" class="form-label"></label>
+                            <select asp-for="CompanyStructure" class="form-select">
+                                <option value="">-- Select --</option>
+                                <option value="Sole Trader">Sole Trader</option>
+                                <option value="Partnership">Partnership</option>
+                                <option value="Limited Liability">Limited Liability</option>
+                                <option value="Other">Other</option>
+                            </select>
+                            <span asp-validation-for="CompanyStructure" class="text-danger"></span>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label asp-for="BusinessSince" class="form-label"></label>
+                            <input asp-for="BusinessSince" class="form-control" />
+                            <span asp-validation-for="BusinessSince" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label asp-for="PhoneNumber" class="form-label"></label>
+                        <input asp-for="PhoneNumber" class="form-control" />
+                        <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+                    </div>
+                    <div class="mb-3">
+                        <label asp-for="StreetAddress" class="form-label"></label>
+                        <input asp-for="StreetAddress" class="form-control" />
+                        <span asp-validation-for="StreetAddress" class="text-danger"></span>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label asp-for="State" class="form-label"></label>
+                            <select asp-for="State" asp-items="@(new SelectList(ViewBag.States))" id="stateDropdown" class="form-select">
+                                <option value="">-- Select State --</option>
+                            </select>
+                            <span asp-validation-for="State" class="text-danger"></span>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label asp-for="City" class="form-label"></label>
+                            <select asp-for="City" id="cityDropdown" class="form-select">
+                                <option value="">-- Select State First --</option>
+                            </select>
+                            <span asp-validation-for="City" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label asp-for="ZipCode" class="form-label"></label>
+                        <input asp-for="ZipCode" class="form-control" />
+                        <span asp-validation-for="ZipCode" class="text-danger"></span>
+                    </div>
+                    <h5 class="mt-4">Bank Information</h5>
+                    <hr />
+                    <div class="mb-3">
+                        <label asp-for="BankName" class="form-label"></label>
+                        <select asp-for="BankName" id="bankDropdown" class="form-select">
+                            <option value="">-- Select Bank --</option>
+                        </select>
+                        <span asp-validation-for="BankName" class="text-danger"></span>
+                    </div>
+                    <div class="mb-3">
+                        <label asp-for="BankState" class="form-label"></label>
+                        <select asp-for="BankState" id="bankStateDropdown" class="form-select">
+                            <option value="">-- Select State --</option>
+                        </select>
+                        <span asp-validation-for="BankState" class="text-danger"></span>
+                    </div>
+                    <div class="mb-3">
+                        <label asp-for="BankCity" class="form-label"></label>
+                        <select asp-for="BankCity" id="bankCityDropdown" class="form-select">
+                            <option value="">-- Select City --</option>
+                        </select>
+                        <span asp-validation-for="BankCity" class="text-danger"></span>
+                    </div>
+                    <div class="mb-3">
+                        <label asp-for="BankBranch" class="form-label"></label>
+                        <select asp-for="BankBranch" id="bankBranchDropdown" class="form-select">
+                            <option value="">-- Select Branch --</option>
+                        </select>
+                        <span asp-validation-for="BankBranch" class="text-danger"></span>
+                    </div>
+                    <div class="mb-3">
+                        <label asp-for="IFSCCode" class="form-label"></label>
+                        <input asp-for="IFSCCode" id="ifscInput" class="form-control" readonly />
+                        <span asp-validation-for="IFSCCode" class="text-danger"></span>
+                    </div>
+                    <div class="mb-3">
+                        <label asp-for="BankZipCode" class="form-label"></label>
+                        <input asp-for="BankZipCode" id="zipInput" class="form-control" readonly />
+                        <span asp-validation-for="BankZipCode" class="text-danger"></span>
+                    </div>
+                    <div class="mb-3">
+                        <label asp-for="AccountNumber" class="form-label"></label>
+                        <input asp-for="AccountNumber" class="form-control" maxlength="18" />
+                        <span asp-validation-for="AccountNumber" class="text-danger"></span>
+                    </div>
+                    <h5 class="mt-4">Company Logo</h5>
+                    <hr />
+                    <div class="mb-3">
+                        <label for="logoFile" class="form-label">Upload New Logo (optional)</label>
+                        <input type="file" name="logoFile" class="form-control" />
+                        @if (!string.IsNullOrEmpty(Model.LogoImagePath))
+                        {
+                            <div class="mt-2">
+                                <img src="@Model.LogoImagePath" class="img-fluid rounded" style="max-height:100px;" alt="Current Logo" />
+                            </div>
+                        }
+                    </div>
+                    <div class="d-grid mt-4">
+                        <input type="submit" value="Save Changes" class="btn btn-primary" />
+                        <a asp-action="Index" class="btn btn-secondary mt-2">Cancel</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+    <script>
+        $(document).ready(function () {
+            // Dynamically populate bank names from IndianBanks.json
+            $.getJSON('/Data/IndianBanks.json', function (banksData) {
+                var bankDropdown = $('#bankDropdown');
+                bankDropdown.empty();
+                bankDropdown.append($('<option/>', { value: '', text: '-- Select Bank --' }));
+                $.each(Object.keys(banksData), function (i, bankName) {
+                    bankDropdown.append($('<option/>', { value: bankName, text: bankName }));
+                });
+            });
+            // Existing city/state logic for business address
+            $('#stateDropdown').change(function () {
+                var selectedState = $(this).val();
+                var cityDropdown = $('#cityDropdown');
+                cityDropdown.empty();
+                if (selectedState) {
+                    $.getJSON('/Dashboard/GetCitiesByState', { state: selectedState }, function (cities) {
+                        if (cities && cities.length > 0) {
+                            cityDropdown.append($('<option/>', { value: '', text: '-- Select City --' }));
+                            $.each(cities, function (index, city) {
+                                cityDropdown.append($('<option/>', { value: city, text: city }));
+                            });
+                        } else {
+                            cityDropdown.append($('<option/>', { value: '', text: 'No cities found' }));
+                        }
+                    });
+                } else {
+                    cityDropdown.append($('<option/>', { value: '', text: '-- Select State First --' }));
+                }
+            });
+            // --- Bank dropdown logic ---
+            let banksData = {};
+            $.getJSON('/Data/IndianBanks.json', function (data) {
+                banksData = data;
+            });
+            $('#bankDropdown').change(function () {
+                var bank = $(this).val();
+                var stateDropdown = $('#bankStateDropdown');
+                stateDropdown.empty();
+                $('#bankCityDropdown').empty();
+                $('#bankBranchDropdown').empty();
+                $('#ifscInput').val('');
+                $('#zipInput').val('');
+                if (bank && banksData[bank]) {
+                    stateDropdown.append($('<option/>', { value: '', text: '-- Select State --' }));
+                    $.each(Object.keys(banksData[bank].States), function (i, state) {
+                        stateDropdown.append($('<option/>', { value: state, text: state }));
+                    });
+                } else {
+                    stateDropdown.append($('<option/>', { value: '', text: '-- Select Bank First --' }));
+                }
+            });
+            $('#bankStateDropdown').change(function () {
+                var bank = $('#bankDropdown').val();
+                var state = $(this).val();
+                var cityDropdown = $('#bankCityDropdown');
+                cityDropdown.empty();
+                $('#bankBranchDropdown').empty();
+                $('#ifscInput').val('');
+                $('#zipInput').val('');
+                if (bank && state && banksData[bank] && banksData[bank].States[state]) {
+                    cityDropdown.append($('<option/>', { value: '', text: '-- Select City --' }));
+                    $.each(Object.keys(banksData[bank].States[state]), function (i, city) {
+                        cityDropdown.append($('<option/>', { value: city, text: city }));
+                    });
+                } else {
+                    cityDropdown.append($('<option/>', { value: '', text: '-- Select State First --' }));
+                }
+            });
+            $('#bankCityDropdown').change(function () {
+                var bank = $('#bankDropdown').val();
+                var state = $('#bankStateDropdown').val();
+                var city = $(this).val();
+                var branchDropdown = $('#bankBranchDropdown');
+                branchDropdown.empty();
+                $('#ifscInput').val('');
+                $('#zipInput').val('');
+                if (bank && state && city && banksData[bank] && banksData[bank].States[state] && banksData[bank].States[state][city]) {
+                    branchDropdown.append($('<option/>', { value: '', text: '-- Select Branch --' }));
+                    $.each(Object.keys(banksData[bank].States[state][city]), function (i, branch) {
+                        branchDropdown.append($('<option/>', { value: branch, text: branch }));
+                    });
+                } else {
+                    branchDropdown.append($('<option/>', { value: '', text: '-- Select City First --' }));
+                }
+            });
+            $('#bankBranchDropdown').change(function () {
+                var bank = $('#bankDropdown').val();
+                var state = $('#bankStateDropdown').val();
+                var city = $('#bankCityDropdown').val();
+                var branch = $(this).val();
+                if (bank && state && city && branch && banksData[bank] && banksData[bank].States[state] && banksData[bank].States[state][city] && banksData[bank].States[state][city][branch]) {
+                    $('#ifscInput').val(banksData[bank].States[state][city][branch].IFSC);
+                    $('#zipInput').val(banksData[bank].States[state][city][branch].ZipCode);
+                } else {
+                    $('#ifscInput').val('');
+                    $('#zipInput').val('');
+                }
+            });
+        });
+    </script>
+}
